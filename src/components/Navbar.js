@@ -15,10 +15,23 @@ const authenticated = false;
 
 const logged = authenticated ? "Logout" : "Login";
 
-const pages = ["Dashboard", "Roadtrip", logged];
+const pages = [
+  {
+    link: "dashboard",
+    name: "Dashboad",
+  },
+  {
+    link: "roadtrip",
+    name: "Roadtrip",
+  },
+  {
+    link: logged.toLowerCase(),
+    name: logged,
+  },
+];
 const navLinks = pages.map((page) => (
-  <a key={page} className="no-underline text-gray-800 font-semibold hover:text-gray-600" href={`#${page}`}>
-    {page}
+  <a key={page.link} className="no-underline text-gray-800 font-semibold hover:text-gray-600" href={`${page.link}`}>
+    {page.name}
   </a>
 ));
 
@@ -26,7 +39,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => (
   <div className="flex items-center justify-between p-4">
     <div className="flex items-center">
       <p className="text-3xl">🚀</p>
-      <a href="#home" className="text-xl font-bold no-underline text-gray-800 hover:text-gray-600">
+      <a href="/" className="text-xl font-bold no-underline text-gray-800 hover:text-gray-600">
         Roadtripfy
       </a>
     </div>
