@@ -10,7 +10,12 @@ const ResponsiveNavbar = () => {
   );
 };
 
-const pages = ["Products", "Pricing", "Login"];
+// Cambiar cuando se implementé autenticación con firebase
+const authenticated = false;
+
+const logged = authenticated ? "Logout" : "Login";
+
+const pages = ["Dashboard", "Roadtrip", logged];
 const navLinks = pages.map((page) => (
   <a key={page} className="no-underline text-gray-800 font-semibold hover:text-gray-600" href={`#${page}`}>
     {page}
