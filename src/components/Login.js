@@ -9,7 +9,7 @@ const Login = () => {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Inicia sesión con tu cuenta</h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               O{" "}
-              <a href="#" className="font-medium text-teal-600 hover:text-indigo-500">
+              <a href="/signin" className="font-medium text-teal-600 hover:text-indigo-500">
                 registrate
               </a>
             </p>
@@ -56,7 +56,7 @@ const Login = () => {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="/recuperar/cuenta" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Olvidaste tu contraseña?
                 </a>
               </div>
