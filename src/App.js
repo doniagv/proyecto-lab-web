@@ -1,3 +1,5 @@
+import { Routes, Route, Link } from "react-router-dom";
+
 import "./App.css";
 import Landingpage from "./components/Landingpage";
 import ResponsiveNavbar from "./components/Navbar";
@@ -6,7 +8,11 @@ function App() {
   return (
     <>
       <ResponsiveNavbar />
-      <Landingpage />
+      <Routes>
+        <Route path="/" element={<Landingpage />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/logout" element={<Logout />} /> */}
+      </Routes>
     </>
   );
 }
