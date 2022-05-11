@@ -4,6 +4,7 @@ import "./App.css";
 import Landingpage from "./components/Landingpage";
 import Login from "./components/Login";
 import ResponsiveNavbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );
