@@ -1,20 +1,61 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
+import { useEffect, useState } from "react";
 
 const Login = () => {
+  const CLIENT_ID = "d3c2fc677be24a668f8d320ef9a78800";
+  const REDIRECT_URI = "http://localhost:3000";
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const RESPONSE_TYPE = "token";
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token");
+
+    if (!token && hash) {
+      token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
+
+      window.location.hash = "";
+      window.localStorage.setItem("token", token);
+    }
+
+    setToken(token);
+  }, [token]);
+  const logout = () => {
+    setToken("");
+    window.localStorage.removeItem("token");
+  };
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Inicia sesión con tu cuenta</h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">{token == null ? "Inicia sesión con tu cuenta de Spotify" : "Cerrar sesión"}</h2>
+            {/* <p className="mt-2 text-center text-sm text-gray-600">
               O{" "}
               <a href="/signin" className="font-medium text-teal-600 hover:text-indigo-500">
                 registrate
               </a>
-            </p>
+            </p> */}
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <div className="grid">
+            {token == null ? (
+              <a
+                className="text-center p-4 bg-teal-500 rounded-lg font-bold text-white mt-5 hover:bg-gray-600"
+                href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+                Login to Spotify
+              </a>
+            ) : (
+              <button onClick={logout} className="p-4 bg-teal-500 rounded-lg font-bold text-white mt-5 hover:bg-gray-600">
+                Logout
+              </button>
+            )}
+          </div>
+
+          {/* <form className="mt-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -72,7 +113,7 @@ const Login = () => {
                 Sign in
               </button>
             </div>
-          </form>
+          </form> */}
         </div>
       </div>
     </>
