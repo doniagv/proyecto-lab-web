@@ -1,7 +1,10 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
+  const navigate = useNavigate();
+
   const CLIENT_ID = "d3c2fc677be24a668f8d320ef9a78800";
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -27,6 +30,7 @@ const Login = () => {
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    navigate("/login");
   };
   return (
     <>
@@ -34,6 +38,7 @@ const Login = () => {
         <div className="max-w-md w-full space-y-8">
           <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">{token == null ? "Inicia sesión con tu cuenta de Spotify" : "Cerrar sesión"}</h2>
+
             {/* <p className="mt-2 text-center text-sm text-gray-600">
               O{" "}
               <a href="/signin" className="font-medium text-teal-600 hover:text-indigo-500">

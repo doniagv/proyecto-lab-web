@@ -35,6 +35,7 @@ const ResponsiveNavbar = () => {
     }
 
     setToken(token);
+
     const autenticado = window.localStorage.getItem("token") !== null;
     setAuthenticated(autenticado);
     const isLogged = autenticado ? "Logout" : "Login";
