@@ -4,15 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const navigate = useNavigate();
-
-  const CLIENT_ID = "d3c2fc677be24a668f8d320ef9a78800";
+  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
   useEffect(() => {
     const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
+    let token = window.localStorage.getItem("token_roadtripfy");
 
     if (!token && hash) {
       token = hash
@@ -22,14 +21,14 @@ const Login = (props) => {
         .split("=")[1];
 
       window.location.hash = "";
-      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("token_roadtripfy", token);
     }
 
     setToken(token);
   }, [token]);
   const logout = () => {
     setToken("");
-    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("token_roadtripfy");
     navigate("/login");
   };
   return (

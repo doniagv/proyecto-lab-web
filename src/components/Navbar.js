@@ -21,7 +21,7 @@ const ResponsiveNavbar = () => {
 
   useEffect(() => {
     const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
+    let token = window.localStorage.getItem("token_roadtripfy");
 
     if (!token && hash) {
       token = hash
@@ -31,12 +31,12 @@ const ResponsiveNavbar = () => {
         .split("=")[1];
 
       window.location.hash = "";
-      window.localStorage.setItem("token", token);
+      window.localStorage.setItem("token_roadtripfy", token);
     }
 
     setToken(token);
 
-    const autenticado = window.localStorage.getItem("token") !== null;
+    const autenticado = window.localStorage.getItem("token_roadtripfy") !== null;
     setAuthenticated(autenticado);
     const isLogged = autenticado ? "Logout" : "Login";
     setLogged(isLogged);
