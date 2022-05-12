@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
 const ResponsiveNavbar = () => {
@@ -38,7 +39,7 @@ const ResponsiveNavbar = () => {
 
     const autenticado = window.localStorage.getItem("token_roadtripfy") !== null;
     setAuthenticated(autenticado);
-    const isLogged = autenticado || authenticated ? "Logout" : "Login";
+    const isLogged = autenticado ? "Logout" : "Login";
     setLogged(isLogged);
     setPages([
       {
