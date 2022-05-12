@@ -4,6 +4,7 @@ import "./App.css";
 import Landingpage from "./components/Landingpage";
 import Login from "./components/Login";
 import ResponsiveNavbar from "./components/Navbar";
+import Recomendacion from "./components/Recomendacion";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Landingpage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Login />} />
+        <Route path="/roadtrip" element={<Recomendacion />} />
       </Routes>
     </>
   );
