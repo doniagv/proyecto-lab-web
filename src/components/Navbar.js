@@ -38,7 +38,7 @@ const ResponsiveNavbar = () => {
 
     const autenticado = window.localStorage.getItem("token_roadtripfy") !== null;
     setAuthenticated(autenticado);
-    const isLogged = autenticado ? "Logout" : "Login";
+    const isLogged = autenticado || authenticated ? "Logout" : "Login";
     setLogged(isLogged);
     setPages([
       {
