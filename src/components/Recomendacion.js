@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import MultiStepForm from "./MultiStepForm";
+import RecommendationForm from "./RecommendationForm";
 
 const Recomendacion = () => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
   const [token, setToken] = useState(null);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [searchParams, setSearchParams] = useState({});
 
   useEffect(() => {
     let token = window.localStorage.getItem("token_roadtripfy");
+    const fetchGenres = (token) => {
+      axios("https://api.spotify.com/v1/recommendations/available-genre-seeds", {
+        method: "GET",
+        headers: { Authorization: "Bearer " + token },
+      }).then((response) => {
+        console.log(response);
+        setGenres(response.data.genres);
+      });
+    };
+    fetchGenres(token);
     setToken(token);
   }, []);
 
@@ -18,7 +33,7 @@ const Recomendacion = () => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        q: searchKey,
+        q: searchParams.searchKey,
         type: "artist",
       },
     });
@@ -37,25 +52,27 @@ const Recomendacion = () => {
     ));
   };
 
+  const onChange = (e) => {
+    const { name, value } = e.target;
+
+    setSearchParams({
+      ...searchParams,
+      [name]: value,
+    });
+  };
+
   return (
     <>
       {token ? (
         <>
           <div className="flex justify-center m-6">
-            <form onSubmit={searchArtists} className="input-group relative flex mb-4">
-              <input
-                type="text"
-                onChange={(e) => setSearchKey(e.target.value)}
-                className="orm-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                placeholder="Buscar artista"
-              />
-              <button
-                type={"submit"}
-                className="btn ml-2 inline-block px-6 py-2 border-2 border-teal-600 text-teal-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-                Search
-              </button>
-            </form>
+            <RecommendationForm onChange={onChange} searchArtists={searchArtists} searchParams={searchParams} genres={genres} />
           </div>
+          {/* <div className="flex justify-center m-6">
+            
+
+            <form onSubmit={searchArtists} className="input-group relative flex mb-4"></form>
+          </div> */}
           <div className="flex flex-wrap justify-center">{renderArtists()}</div>
         </>
       ) : (
