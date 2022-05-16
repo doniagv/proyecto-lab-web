@@ -5,6 +5,7 @@ import Landingpage from "./components/Landingpage";
 import Login from "./components/Login";
 import ResponsiveNavbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
+import Recomendacion from "./components/Recomendacion";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="/" element={<Landingpage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/logout" element={<Login />} />
+        <Route path="/roadtrip" element={<Recomendacion />} />
       </Routes>
     </>
   );
