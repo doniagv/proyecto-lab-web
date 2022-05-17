@@ -44,7 +44,7 @@ const ResponsiveNavbar = () => {
     setPages([
       {
         link: "dashboard",
-        name: "Dashboad",
+        name: "Dashboard",
       },
       {
         link: "roadtrip",
