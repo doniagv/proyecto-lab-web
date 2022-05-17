@@ -6,7 +6,7 @@ const Login = (props) => {
   const navigate = useNavigate();
   var scope = "user-read-private user-read-email user-follow-read user-top-read";
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-  const REDIRECT_URI = "http://localhost:3000";
+  const REDIRECT_URI = "http://localhost:3000/dashboard";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
