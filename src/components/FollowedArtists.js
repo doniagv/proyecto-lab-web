@@ -5,9 +5,8 @@ const FollowedArtists = ({ artist }) => {
     <div key={artist.id} className="m-2 text-center max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-900 dark:border-gray-700">
       <a href={artist.uri}>{artist.images.length ? <img className="rounded-t-lg" src={artist.images[0].url} alt="" /> : <div>No Image</div>}</a>
       <div className="p-5">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{artist.name}</h5>
-        </a>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{artist.name}</h5>
+
         <div className="flex flex-wrap justify-center mt-3 mb-3">
           {artist.genres &&
             artist.genres.map((genre) => {

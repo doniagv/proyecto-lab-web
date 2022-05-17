@@ -5,9 +5,8 @@ const Tracks = ({ track }) => {
     <div key={track.id} className="m-2 text-center max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-900 dark:border-gray-700">
       <a href={track.external_urls.spotify}>{track.album.images.length ? <img className="rounded-t-lg" src={track.album.images[0].url} alt="" /> : <div>No Image</div>}</a>
       <div className="p-5">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{track.name}</h5>
-        </a>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{track.name}</h5>
+
         <div className="flex flex-wrap justify-center mt-3 mb-3">
           <span key={track.album.id} className="bg-gray-100 text-gray-800 text-xs font-semibold m-1 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
             {track.album.name}
