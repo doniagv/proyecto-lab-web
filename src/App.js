@@ -13,10 +13,10 @@ function App() {
       <ResponsiveNavbar />
       <Routes>
         <Route path="/" exact element={<Landingpage />} />
-        <Route path="/login" exact element={<Login />} />
-        <Route path="/dashboard" exact element={<Dashboard />} />
-        <Route path="/logout" exact element={<Login />} />
-        <Route path="/roadtrip" exact element={<Recomendacion />} />
+        <Route path="http://34.125.58.211//login" exact element={<Login />} />
+        <Route path="http://34.125.58.211//dashboard" exact element={<Dashboard />} />
+        <Route path="http://34.125.58.211//logout" exact element={<Login />} />
+        <Route path="http://34.125.58.211//roadtrip" exact element={<Recomendacion />} />
       </Routes>
     </>
   );
