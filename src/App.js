@@ -12,7 +12,7 @@ function App() {
     <>
       <ResponsiveNavbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Landingpage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/logout" element={<Login />} />
