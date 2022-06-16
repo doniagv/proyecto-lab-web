@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [followedArtists, setFollowedArtists] = useState(null);
   const [topTracks, setTopTracks] = useState(null);
+  const [tracksAnalyzed, setTracksAnalyzed] = useState([]);
 
   useEffect(() => {
     let token = window.localStorage.getItem("token_roadtripfy");
@@ -19,7 +20,6 @@ const Dashboard = () => {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
       }).then((response) => {
-        console.log(response);
         setCurrentUser(response.data);
       });
     };
@@ -37,17 +37,30 @@ const Dashboard = () => {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
       }).then((response) => {
-        console.log(response);
         setFollowedArtists(response.data.items);
       });
     };
-    const fetchTopTracks = (token) => {
+    const fetchTopTracks = async (token) => {
       axios("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10", {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
       }).then((response) => {
-        console.log(response);
         setTopTracks(response.data.items);
+        response.data.items.forEach((track) => {
+          fetchtTracksAnalysis(token, track.id);
+        });
+        return response.data.items;
+      });
+    };
+
+    const fetchtTracksAnalysis = async (token, id) => {
+      axios(`https://api.spotify.com/v1/audio-analysis/${id}`, {
+        method: "GET",
+        headers: { Authorization: "Bearer " + token },
+      }).then((response) => {
+        let tmpTracks = tracksAnalyzed;
+        tmpTracks.push(response.data);
+        setTracksAnalyzed(tmpTracks);
       });
     };
 
@@ -55,14 +68,13 @@ const Dashboard = () => {
       axios("https://api.spotify.com/v1/me/playlists", {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
-      }).then((response) => {
-        console.log(response);
-      });
+      }).then((response) => {});
     };
     fetchPlaylists(token);
     fetchCurrentUser(token);
     fetchTopArtists(token);
     fetchTopTracks(token);
+
     // fetchFollowedArtists(token);
     setToken(token);
   }, []);
@@ -100,6 +112,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-gray-800">
+      {console.log(tracksAnalyzed)}
       {token && currentUser ? (
         <>
           <div>
