@@ -54,7 +54,7 @@ const Dashboard = () => {
     };
 
     const fetchtTracksAnalysis = async (token, id) => {
-      axios(`https://api.spotify.com/v1/audio-analysis/${id}`, {
+      axios(`https://api.spotify.com/v1/audio-features/${id}`, {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
       }).then((response) => {

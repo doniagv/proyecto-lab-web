@@ -7,7 +7,7 @@ const Login = (props) => {
   var scope = "user-read-private user-read-email user-follow-read user-top-read";
   const CLIENT_ID = "d3c2fc677be24a668f8d320ef9a78800";
   // const REDIRECT_URI = "http://34.127.42.85:86/";
-  const REDIRECT_URI = "https://develop--adorable-tanuki-84fb9c.netlify.app/";
+  const REDIRECT_URI = "http://localhost:3000/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
