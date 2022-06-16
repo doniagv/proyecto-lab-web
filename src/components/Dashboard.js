@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [topTracks, setTopTracks] = useState(null);
 
   useEffect(() => {
-    let tokenLocal = window.localStorage.getItem("token_roadtripfy");
+    let token = window.localStorage.getItem("token_roadtripfy");
     const fetchCurrentUser = (token) => {
       axios("https://api.spotify.com/v1/me", {
         method: "GET",
@@ -59,12 +59,12 @@ const Dashboard = () => {
         console.log(response);
       });
     };
-    fetchPlaylists(tokenLocal);
-    fetchCurrentUser(tokenLocal);
-    fetchTopArtists(tokenLocal);
-    fetchTopTracks(tokenLocal);
+    fetchPlaylists(token);
+    fetchCurrentUser(token);
+    fetchTopArtists(token);
+    fetchTopTracks(token);
     // fetchFollowedArtists(token);
-    setToken(tokenLocal);
+    setToken(token);
   }, []);
 
   const renderArtists = () => {
