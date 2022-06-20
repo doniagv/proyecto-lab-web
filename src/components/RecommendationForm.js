@@ -3,7 +3,7 @@ import React from "react";
 const RecommendationForm = (props) => {
   return (
     <>
-      <form onSubmit={props.searchArtists} className="w-full max-w-lg">
+      <form onSubmit={props.getRecommendations} className="w-full max-w-lg">
         <h2
           className="
           mb-4
@@ -16,9 +16,9 @@ const RecommendationForm = (props) => {
           Descubre canciones solo para ti
         </h2>
 
-        <p className="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg mb-6">Completa la información para obtener recomendaciones</p>
+        <p className="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg mb-6">Elige una playlist para recomendarte canciones</p>
         <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
               Género
             </label>
@@ -37,8 +37,8 @@ const RecommendationForm = (props) => {
                   return <option value={genre}>{genre.toUpperCase()}</option>;
                 })}
             </select>
-          </div>
-          <div className="w-full md:w-1/2 px-3">
+          </div> */}
+          {/* <div className="w-full md:w-1/2 px-3">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
               Artista
             </label>
@@ -50,7 +50,7 @@ const RecommendationForm = (props) => {
               placeholder="Buscar artista"
               value={props.searchParams.searchKey}
             />
-          </div>
+          </div> */}
         </div>
         {/* <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
@@ -110,13 +110,14 @@ const RecommendationForm = (props) => {
           </div>
         </div> */}
 
-        <div className="flex justify-center m-5">
+        {/* <div className="flex justify-center m-5">
           <button
+            onClick={props.getRecommendations}
             type={"submit"}
             className="btn ml-2 inline-block px-6 py-2 border-2 border-teal-600 text-teal-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
-            Buscar
+            Obtener recomendaciones
           </button>
-        </div>
+        </div> */}
       </form>
     </>
   );
