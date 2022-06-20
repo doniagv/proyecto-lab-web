@@ -71,13 +71,20 @@ const Recomendacion = () => {
   };
 
   const getRecommendations = async () => {
-    const res = await fetch("http://34.127.42.85:8000/", {
+    const res = await fetch("/api:8000/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
+    // const res = await fetch("http://34.127.42.85:8000/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
     const apijson = await res.json();
     console.log(apijson);
   };
