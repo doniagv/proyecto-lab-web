@@ -12,9 +12,15 @@ const Recomendacion = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchParams, setSearchParams] = useState({});
+  const [data, setData] = useState({});
 
   useEffect(() => {
     let token = window.localStorage.getItem("token_roadtripfy");
+    setData({
+      token: token,
+      playlist: "Lo-fi Thinking",
+    });
+
     const fetchGenres = (token) => {
       axios("https://api.spotify.com/v1/recommendations/available-genre-seeds", {
         method: "GET",
@@ -64,6 +70,18 @@ const Recomendacion = () => {
     });
   };
 
+  const getRecommendations = async () => {
+    const res = await fetch("http://34.127.42.85:8000/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const apijson = await res.json();
+    console.log(apijson);
+  };
+
   return (
     <>
       {token ? (
@@ -77,6 +95,7 @@ const Recomendacion = () => {
             <form onSubmit={searchArtists} className="input-group relative flex mb-4"></form>
           </div> */}
           <div className="flex flex-wrap justify-center">{renderArtists()}</div>
+          <button onClick={getRecommendations}>Obtener recomendaciones</button>
         </>
       ) : (
         <div className="flex justify-center m-6">Se requiere inicio de sesión</div>
