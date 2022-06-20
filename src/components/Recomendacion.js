@@ -71,7 +71,7 @@ const Recomendacion = () => {
   };
 
   const getRecommendations = async () => {
-    console.log(data);
+    console.log(JSON.stringify(data));
     const res = await fetch("/api/", {
       method: "POST",
       headers: {
