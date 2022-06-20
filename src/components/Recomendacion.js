@@ -152,7 +152,7 @@ const Recomendacion = () => {
                 Descubre canciones solo para ti
               </h2>
 
-              <p className="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg mb-6">Elige una playlist para recomendarte canciones</p>
+              <p className="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg mb-6">Elige una playlist para recomendarte canciones que te gusten</p>
               <div className="flex justify-center m-5">
                 <select name="playlist" onChange={onChange} value={data.playlist ? data.playlist : ""}>
                   <option selected value="">
