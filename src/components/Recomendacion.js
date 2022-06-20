@@ -75,8 +75,9 @@ const Recomendacion = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      body: data,
+      body: JSON.stringify(data),
     });
     // const res = await fetch("http://34.127.42.85:8000/", {
     //   method: "POST",
