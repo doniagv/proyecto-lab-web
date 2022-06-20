@@ -71,6 +71,7 @@ const Recomendacion = () => {
   };
 
   const getRecommendations = async () => {
+    console.log(data);
     const res = await fetch("/api/", {
       method: "POST",
       headers: {
@@ -86,6 +87,7 @@ const Recomendacion = () => {
     //   },
     //   body: JSON.stringify(data),
     // });
+
     const apijson = await res.json();
     console.log(apijson);
   };
