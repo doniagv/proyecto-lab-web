@@ -111,14 +111,13 @@ const Recomendacion = () => {
     //   },
     //   body: JSON.stringify(data),
     // });
-    const res = await fetch("http://34.127.42.85:84/", {
+    const res = await fetch("http://34.127.42.85:84/", JSON.stringify(data), {
       method: "POST",
       mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify(data),
     });
     // const res = await fetch("http://34.127.42.85:84/", {
     //   method: "POST",
