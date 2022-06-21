@@ -103,23 +103,23 @@ const Recomendacion = () => {
     // axios.get("http://34.127.42.85:8000/", { params: { body: JSON.stringify(data) } }, config).then((res) => {
     //   console.log(res);
     // });
-    // const res = await fetch("/api/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    const res = await fetch("http://34.127.42.85:84/", {
+    const res = await fetch("http://34.127.42.85:8000/", {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
+    // const res = await fetch("http://34.127.42.85:84/", {
+    //   method: "POST",
+    //   mode: "no-cors",
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
 
     const apijson = await res.json();
     setRecommendedSongs(JSON.parse(apijson));
