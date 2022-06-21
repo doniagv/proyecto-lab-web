@@ -113,6 +113,7 @@ const Recomendacion = () => {
     // });
     const res = await fetch("http://34.127.42.85:84/", {
       method: "POST",
+      mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
