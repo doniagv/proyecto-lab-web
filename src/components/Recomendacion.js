@@ -118,7 +118,7 @@ const Recomendacion = () => {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
-      body: data,
+      body: JSON.stringify(data),
     });
 
     const apijson = await res.json();
