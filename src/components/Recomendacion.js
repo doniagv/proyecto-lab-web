@@ -116,7 +116,7 @@ const Recomendacion = () => {
       mode: "no-cors",
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(data),
     });
