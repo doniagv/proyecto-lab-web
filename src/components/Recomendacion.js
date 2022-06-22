@@ -92,26 +92,26 @@ const Recomendacion = () => {
       },
     };
 
-    const res = await fetch("http://34.127.42.85:8000/", {
-      method: "POST",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    // const json_data = JSON.stringify(data);
-    // const res = await fetch("http://34.127.42.85:84/", {
+    // const res = await fetch("http://34.127.42.85:8000/", {
     //   method: "POST",
-    //   mode: "no-cors",
-
     //   headers: {
     //     "Access-Control-Allow-Origin": "*",
     //     "Content-Type": "application/json",
-    //     Accept: "application/json",
     //   },
-    //   body: json_data,
+    //   body: JSON.stringify(data),
     // });
+    const json_data = JSON.stringify(data);
+    const res = await fetch("http://34.127.42.85:84/", {
+      method: "POST",
+      mode: "no-cors",
+
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json_data,
+    });
     // const res = await fetch("http://34.127.42.85:84/", {
     //   method: "POST",
     //   mode: "no-cors",
